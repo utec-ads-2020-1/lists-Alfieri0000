@@ -4,11 +4,15 @@
 #include "list.h"
 #include "iterators/bidirectional_iterator.h"
 
+using namespace std;
+
 // TODO: Implement all methods
 template <typename T>
 class CircularLinkedList : public List<T> {
     public:
-        CircularLinkedList() : List<T>() {}
+        CircularLinkedList() : List<T>() {
+            
+        }
 
         T front();
         T back();

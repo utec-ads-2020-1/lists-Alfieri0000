@@ -5,6 +5,10 @@
         "array": "cpp",
         "deque": "cpp",
         "vector": "cpp",
-        "string_view": "cpp"
+        "string_view": "cpp",
+        "xstring": "cpp",
+        "xutility": "cpp",
+        "ostream": "cpp",
+        "iostream": "cpp"
     }
 }

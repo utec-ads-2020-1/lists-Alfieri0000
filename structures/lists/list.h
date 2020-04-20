@@ -2,6 +2,7 @@
 #define LIST_H
 
 #include "node.h"
+using namespace std;
 
 // TODO: Implement all methods
 template <typename T>
@@ -13,7 +14,9 @@ class List {
 
     public:
         List() : head(nullptr), tail(nullptr), nodes(0) {};
-        ~List();
+        ~List(){
+
+        };
 
         virtual T front() = 0;
         virtual T back() = 0;
@@ -27,7 +30,8 @@ class List {
         virtual void clear() = 0;
         virtual void sort() = 0;
         virtual void reverse() = 0;
-        virtual string name() = 0;
+        virtual string name() = 0
+        ;
 };
 
 #endif
