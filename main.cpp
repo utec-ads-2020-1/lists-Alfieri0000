@@ -13,53 +13,51 @@ int main(int argc, char *argv[]) {
     cout << "\tLists Practice" << endl;
     cout << "===========================================================" << endl << endl;
 
-    //Tester::execute();
+//     //Tester::execute();
 
-    /* //Pruebas Stack
-        stack<int> Prueba1;
-        Prueba1.push(10);
-        Prueba1.push(20);
-        Prueba1.pop();
-        cout << Prueba1.peak() << endl;
-    */
+//     /* //Pruebas Stack
+//         stack<int> Prueba1;
+//         Prueba1.push(10);
+//         Prueba1.push(20);
+//         Prueba1.pop();
+//         cout << Prueba1.peak() << endl;
+//     */
 
-   /*Pruebas Queque
-        queue<int> Prueba2;
-        Prueba2.push(10);
-        Prueba2.push(20);
-        Prueba2.push(30);
-        Prueba2.pop();
-        cout << Prueba2.front() <<  " " << Prueba2.back() << " " << Prueba2.size() << endl;
-    */
+//    /*Pruebas Queque
+//         queue<int> Prueba2;
+//         Prueba2.push(10);
+//         Prueba2.push(20);
+//         Prueba2.push(30);
+//         Prueba2.pop();
+//         cout << Prueba2.front() <<  " " << Prueba2.back() << " " << Prueba2.size() << endl;
+//     */
    
-//      Pruebas Forward
-//         //cout << Prueba3.front() << endl;
-//         //cout << Prueba3.back() << endl;
+// //      Pruebas Forward
+// //         //cout << Prueba3.front() << endl;
+// //         //cout << Prueba3.back() << endl;
 
-//         ForwardList<int> Prueba3;
-//         ForwardList<int> Prueba4;
-//         Prueba3.push_front(1);
-//         Prueba3.push_front(3);
-//         Prueba3.push_front(2);
+// //         ForwardList<int> Prueba3;
+// //         ForwardList<int> Prueba4;
+// //         Prueba3.push_front(1);
+// //         Prueba3.push_front(3);
+// //         Prueba3.push_front(2);
 
-//         Prueba3.sort();
+// //         Prueba3.sort();
 
-//         cout << Prueba3.operator[](0) << endl;
-//         cout << Prueba3.operator[](1) << endl;
-//         cout << Prueba3.operator[](2) << endl;
+// //         cout << Prueba3.operator[](0) << endl;
+// //         cout << Prueba3.operator[](1) << endl;
+// //         cout << Prueba3.operator[](2) << endl;
 
-        //Pruebas Linked
+// /*         //Pruebas Linked
             LinkedList<int> Prueba5;
             Prueba5.push_front(1);
             Prueba5.push_front(2);
             Prueba5.push_back(3);
 
-            cout << Prueba5.operator[](1) << endl;
+//             cout << Prueba5.operator[](1) << endl; */
 
-
+    return 0;
+}
         
        
 
-
-    return EXIT_SUCCESS;
-}
