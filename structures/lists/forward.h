@@ -37,6 +37,7 @@ class ForwardList : public List<T> {
                 temp->next = this->head;
                 this->head = temp;
             }
+            this->nodes++;
         };
         void push_back(T t){
             Node<T>* tempEntry = new Node<T>;
@@ -54,7 +55,7 @@ class ForwardList : public List<T> {
                 tempFinal->next = tempEntry;
                 this->tail = tempEntry;
             }
-
+            this->nodes++;
         };
         void pop_front(){
             if (empty()){
@@ -66,6 +67,7 @@ class ForwardList : public List<T> {
 
             //Tengo que borrar lo que apunta head, guardado en temp?
             //delete temp;
+            this->nodes--;
         };
 
         void pop_back(){
@@ -82,6 +84,7 @@ class ForwardList : public List<T> {
             temp->next = nullptr;
 
             //Tengo que borrar lo guardado en tail anteriormente?
+            this->nodes--;
 
         };
         T operator[](int t){
@@ -102,19 +105,7 @@ class ForwardList : public List<T> {
             return !this->head;
         };
         int size(){
-            if(empty()){
-                return 0;
-            }
-            else{
-                int count = 1;
-                Node<T>* tempFinal;
-                tempFinal = this->head;
-                while(tempFinal->next!=nullptr){
-                    tempFinal = tempFinal->next;
-                    count++;
-                }
-                return count;
-            }
+            return this->nodes;
         };
         void clear(){
             while(!empty()){
@@ -159,8 +150,14 @@ class ForwardList : public List<T> {
 
         };
 
-        ForwardIterator<T> begin();
-	    ForwardIterator<T> end();
+        ForwardIterator<T> begin(){
+            ForwardIterator <T> temp(this->head);
+            return temp;
+        };
+	    ForwardIterator<T> end(){
+            ForwardIterator <T> temp(this->tail->next);
+            return temp;
+        };
 
         string name() {
             return "Forward List";

@@ -62,7 +62,6 @@ class LinkedList : public List<T> {
                 temp = this->head;
                 this->head = temp->next;
                 this->head->prev = nullptr;
-                this->nodes--;
 
                 //Tengo que borrar lo que apunta head, guardado en temp?
                 //delete temp;
@@ -133,6 +132,9 @@ class LinkedList : public List<T> {
             }
         };
         void reverse(){
+            if (empty()){
+                throw out_of_range("List is Empty");
+            }
             LinkedList<T> tempReemplazo;
             for(int i = size()-1; i >= 0;i--){
                 tempReemplazo.push_back(operator[](i));
@@ -144,8 +146,14 @@ class LinkedList : public List<T> {
             }
         };
 
-        // BidirectionalIterator<T> begin();
-	    // BidirectionalIterator<T> end();
+        BidirectionalIterator<T> begin(){
+            BidirectionalIterator <T> temp(this->head);
+            return temp;
+        };
+	    BidirectionalIterator<T> end(){
+            BidirectionalIterator <T> temp(this->tail->next);
+            return temp;
+        };
 
         string name() {
             return "Linked List";
@@ -162,7 +170,9 @@ class LinkedList : public List<T> {
          * or whether the value_type supports move-construction or not.
         */
         void merge(LinkedList<T>& X){
-            assert(X.empty() == false);
+            if (X.empty()){
+                throw out_of_range("List is Empty");
+            }
             Node<T>* temp;
             temp = X.head;
             while(temp->next != false){

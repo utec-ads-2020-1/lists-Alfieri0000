@@ -3,7 +3,6 @@
 
 using namespace std;
 
-#include <assert.h> 
 
 #define MAX 1000 
 
@@ -34,7 +33,9 @@ public:
 	};
 
 	void pop(){
-		assert(empty() == false);
+		if (empty()){
+                throw out_of_range("List is Empty");
+		}
 		//Copia
 		T* temp = new T[capacity];
 		for(int i=0;i<top;i++){
@@ -48,11 +49,15 @@ public:
 
 	};
 	T front(){;
-		assert(empty() == false);
+		if (empty()){
+			throw out_of_range("List is Empty");
+		}
 		return this->data[0];
 	}
     T back(){
-		assert(empty() == false);
+		if (empty()){
+			throw out_of_range("List is Empty");
+		}
 		return this->data[top-1];
 	};
 

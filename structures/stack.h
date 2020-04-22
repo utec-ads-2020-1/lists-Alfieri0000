@@ -3,8 +3,6 @@
 
 using namespace std;
 
-#include <assert.h> 
-
 #define MAX 1000 
 
 // TODO: Implement all methods
@@ -33,12 +31,16 @@ public:
 	};
 
 	void pop(){
-		assert(empty() == false);
+		if (empty()){
+			throw out_of_range("List is Empty");
+		}
 		this->top--;
 	};
 
 	T peak(){
-		assert(empty() == false);
+		if (empty()){
+			throw out_of_range("List is Empty");
+		}
 		return this->data[top-1];
 	};
 

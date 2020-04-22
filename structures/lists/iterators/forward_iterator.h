@@ -21,7 +21,7 @@ class ForwardIterator {
         };
 
         bool operator!=(ForwardIterator<T> t){
-            return this->current != t->current;
+            return this->current != t.current;
         };
 
         ForwardIterator<T> operator++(){
