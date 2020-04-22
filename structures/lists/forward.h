@@ -2,30 +2,28 @@
 #define FORWARD_H
 
 #include "list.h"
-//#include "iterators/forward_iterator.h"
+#include "iterators/forward_iterator.h"
 #include "node.h"
-#include <assert.h> 
 
 using namespace std;
 
 // TODO: Implement all methods
 template <typename T>
 class ForwardList : public List<T> {
-    private:
-        Node<T>* head;
-        Node<T>* tail;
-
     public:
         ForwardList() : List<T>() {
-            this->head = nullptr;
         };
-
         T front(){
-            assert(empty() == false);
+            if (empty()){
+                throw out_of_range("List is Empty");
+            }
             return this->head->data;
+
         };
         T back(){
-            assert(empty() == false);
+            if (empty()){
+                throw out_of_range("List is Empty");
+            }
             return this->tail->data;
         };
         void push_front(T t){
@@ -59,7 +57,9 @@ class ForwardList : public List<T> {
 
         };
         void pop_front(){
-            assert(empty() == false);
+            if (empty()){
+                throw out_of_range("List is Empty");
+            }
             Node<T>* temp;
             temp = this->head;
             this->head = temp->next;
@@ -69,7 +69,9 @@ class ForwardList : public List<T> {
         };
 
         void pop_back(){
-            assert(empty() == false);
+            if (empty()){
+                throw out_of_range("List is Empty");
+            }
             Node<T>* temp;
             temp = this->head;
             while(temp->next!=this->tail && this->tail != this->head){
@@ -83,7 +85,12 @@ class ForwardList : public List<T> {
 
         };
         T operator[](int t){
-            assert(empty() == false);
+            if (empty()){
+                throw out_of_range("List is Empty");
+            }
+            if (t >= size() || t < 0){
+                throw out_of_range("Dato fuera de Rango");
+            }
             Node<T>* temp;
             temp = this->head;
             for(int i = 0;i<t;i++){
@@ -92,7 +99,7 @@ class ForwardList : public List<T> {
             return temp->data;
         };
         bool empty(){
-            return this->head == nullptr;
+            return !this->head;
         };
         int size(){
             if(empty()){
@@ -115,7 +122,9 @@ class ForwardList : public List<T> {
             }
         };
         void sort(){
-
+            if (empty()){
+                throw out_of_range("List is Empty");
+            }
             int tam = size();
             T temp[tam];
             for(int i = 0;i<tam;i++){
@@ -135,6 +144,9 @@ class ForwardList : public List<T> {
         };
         
         void reverse(){
+            if (empty()){
+                throw out_of_range("List is Empty");
+            }
             ForwardList<T> tempReemplazo;
             for(int i = size()-1; i >= 0;i--){
                 tempReemplazo.push_back(operator[](i));
@@ -147,8 +159,8 @@ class ForwardList : public List<T> {
 
         };
 
-        //ForwardIterator<T> begin();
-	    //ForwardIterator<T> end();
+        ForwardIterator<T> begin();
+	    ForwardIterator<T> end();
 
         string name() {
             return "Forward List";
@@ -165,7 +177,9 @@ class ForwardList : public List<T> {
          * or whether the value_type supports move-construction or not.
         */
         void merge(ForwardList<T>& X){
-            assert(X.empty() == false);
+            if (X.empty()){
+                throw out_of_range("List inserted is empty");
+            }
             Node<T>* temp;
             temp = X.head;
             while(temp->next != false){
@@ -185,7 +199,7 @@ class ForwardList : public List<T> {
             *A = *B;  
             *B = temp;  
         }  
-        void bubbleSort(T datos[], T tam)  
+        void bubbleSort(T datos[], int tam)  
         {  
             int i, j;  
             for (i = 0; i < tam-1; i++) {

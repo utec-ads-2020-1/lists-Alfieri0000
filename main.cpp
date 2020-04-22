@@ -5,6 +5,7 @@
 #include "structures/queue.h"
 #include "structures/lists/forward.h"
 #include "structures/lists/linked.h"
+#include "structures/lists/circular.h"
 
 using namespace std;
 
@@ -33,12 +34,8 @@ int main(int argc, char *argv[]) {
 //     */
    
 // //      Pruebas Forward
-// //         //cout << Prueba3.front() << endl;
-// //         //cout << Prueba3.back() << endl;
 
-// //         ForwardList<int> Prueba3;
-// //         ForwardList<int> Prueba4;
-// //         Prueba3.push_front(1);
+              //ForwardList<int> Prueba3;
 // //         Prueba3.push_front(3);
 // //         Prueba3.push_front(2);
 
@@ -48,13 +45,33 @@ int main(int argc, char *argv[]) {
 // //         cout << Prueba3.operator[](1) << endl;
 // //         cout << Prueba3.operator[](2) << endl;
 
-// /*         //Pruebas Linked
-            LinkedList<int> Prueba5;
-            Prueba5.push_front(1);
-            Prueba5.push_front(2);
-            Prueba5.push_back(3);
+// //       Pruebas Linked
+        //LinkedList<int> Prueba5;
+        // LinkedList<int> Prueba6;
+        //Prueba5.push_front(1);
+        // Prueba5.push_front(2);
+        // Prueba5.push_back(3);
 
-//             cout << Prueba5.operator[](1) << endl; */
+        // Prueba6.push_front(10);
+
+        // Prueba5.merge(Prueba6);
+        // Prueba5.reverse();
+        // Prueba5.sort();
+
+        //cout << Prueba5.operator[](0) << endl;
+        // cout << Prueba5.operator[](1) << endl;
+        // cout << Prueba5.operator[](2) << endl;
+        // cout << Prueba5.operator[](3) << endl;
+
+    // Pruebas Circular
+            // CircularLinkedList<int> Prueba7;
+            // Prueba7.push_front(10);
+            // cout << Prueba7.front() << endl;
+            // Prueba7.push_front(20);
+            // cout << Prueba7.front() << endl;
+            // Prueba7.push_front(30);
+            // cout << Prueba7.front() << endl;
+
 
     return 0;
 }

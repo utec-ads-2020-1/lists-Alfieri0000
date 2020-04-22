@@ -3,23 +3,22 @@
 
 #include "list.h"
 #include "iterators/bidirectional_iterator.h"
-#include <assert.h>
 
 // TODO: Implement all methods
 template <typename T>
 class LinkedList : public List<T> {
     public:
-        LinkedList() : List<T>() {
-            this->head = nullptr;
-            this->tail = nullptr;
-            this->nodes = 0;
-        }
+        LinkedList() : List<T>() {};
         T front(){
-            assert(empty() == false);
+            if (empty()){
+                throw out_of_range("List is Empty");
+            }
             return this->head->data;
         };
         T back(){
-            assert(empty() == false);
+            if (empty()){
+                throw out_of_range("List is Empty");
+            }
             return this->tail->data;
         };
         void push_front(T t){
@@ -51,7 +50,9 @@ class LinkedList : public List<T> {
             this->nodes++;
         };
         void pop_front(){
-            assert(empty() == false);
+            if (empty()){
+                throw out_of_range("List is Empty");
+            }
             if (size()==1){
                 this->head = nullptr;
                 this->tail = nullptr;
@@ -69,7 +70,9 @@ class LinkedList : public List<T> {
             this->nodes--;
         };
         void pop_back(){
-            assert(empty() == false);
+            if (empty()){
+                throw out_of_range("List is Empty");
+            }
             if (size()==1){
                 this->head = nullptr;
                 this->tail = nullptr;
@@ -85,7 +88,12 @@ class LinkedList : public List<T> {
             //delete temp;
         };
         T operator[](int t){
-            assert(empty() == false);
+            if (empty()){
+                throw out_of_range("List is Empty");
+            }
+            if (t >= size() || t < 0){
+                throw out_of_range("Dato fuera de Rango");
+            }
             Node<T>* temp;
             temp = this->head;
             for(int i = 0;i<t;i++){
@@ -106,10 +114,34 @@ class LinkedList : public List<T> {
         };
         
         void sort(){
-            int a;
+            if (empty()){
+                throw out_of_range("List is Empty");
+            }
+            int tam = size();
+            T temp[tam];
+            for(int i = 0;i<tam;i++){
+                temp[i] = operator[](i);
+            }
+
+            int n = sizeof(temp)/sizeof(temp[0]);  
+            bubbleSort(temp, n);
+
+            clear();
+
+            for(int i = 0 ; i<tam; i++){
+                push_back(temp[i]);
+            }
         };
         void reverse(){
-            int a;
+            LinkedList<T> tempReemplazo;
+            for(int i = size()-1; i >= 0;i--){
+                tempReemplazo.push_back(operator[](i));
+            }
+            clear();
+
+            for(int i = 0 ; i<tempReemplazo.size(); i++){
+                push_back(tempReemplazo.operator[](i));
+            }
         };
 
         // BidirectionalIterator<T> begin();
@@ -129,9 +161,39 @@ class LinkedList : public List<T> {
          * any element: they are transferred, no matter whether x is an lvalue or an rvalue, 
          * or whether the value_type supports move-construction or not.
         */
-        void merge(LinkedList<T>&){
-            int a;
+        void merge(LinkedList<T>& X){
+            assert(X.empty() == false);
+            Node<T>* temp;
+            temp = X.head;
+            while(temp->next != false){
+                push_back(temp->data);
+                temp = temp->next;
+            }
+            push_back(temp->data);
+            this->tail = temp;
+            X.clear();
         };
+
+
+
+         //Función Bubble sort para ordenar
+        void swap(T *A, T *B)  
+        {  
+            T temp = *A;  
+            *A = *B;  
+            *B = temp;  
+        }  
+        void bubbleSort(T datos[], int tam)  
+        {  
+            int i, j;  
+            for (i = 0; i < tam-1; i++) {
+                for (j = 0; j < tam-i-1; j++){
+                    if (datos[j] > datos[j+1]){
+                        swap(&datos[j], &datos[j+1]);
+                    }  
+                }
+            }    
+        }
 };
 
 #endif

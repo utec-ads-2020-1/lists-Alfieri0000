@@ -11,24 +11,72 @@ template <typename T>
 class CircularLinkedList : public List<T> {
     public:
         CircularLinkedList() : List<T>() {
-            
         }
+        T front(){
+            if (empty()){
+                throw out_of_range("List is Empty");
+            }
+            return this->head->data;
+        };
+        T back(){
+            front();
+        };
+        void push_front(T t){
+            Node<T>* temp = new Node<T>;
+            temp->data = t;
+            if(empty()){
+                this->head = temp;
+            }
+            else if(this->nodes == 1){
+                this->head->prev = temp;
+                this->head->next = temp;
+                temp->next = this->head;
+                temp->prev = this->head;
+                this->head = temp;
+            }
+            else{
+                //Inserto temp
+                temp->next = this->head;
+                temp->prev = this->head->prev;
+                
+                //Actualizo al prev de head
+                this->head->prev->next = temp;
+                
+                //Actualizo head
+                this->head = temp;
+            }
+            this->nodes++;
+        };
+        void push_back(T t){
+            int a;
+        };
+        void pop_front(){
+            int a;
+        };
+        void pop_back(){
+            int a;
+        };
+        T operator[](int t){
+            return 1;
+        };
+        bool empty(){
+            return this->nodes == 0;
+        };
+        int size(){
+            return this->nodes;
+        };
+        void clear(){
+            int a;
+        };
+        void sort(){
+            int a;
+        };
+        void reverse(){
+            int a;
+        };
 
-        T front();
-        T back();
-        void push_front(T);
-        void push_back(T);
-        void pop_front();
-        void pop_back();
-        T operator[](int);
-        bool empty();
-        int size();
-        void clear();
-        void sort();
-        void reverse();
-
-        BidirectionalIterator<T> begin();
-	    BidirectionalIterator<T> end();
+        //BidirectionalIterator<T> begin();
+	    //BidirectionalIterator<T> end();
 
         string name() {
             return "Circular Linked List";
@@ -44,7 +92,9 @@ class CircularLinkedList : public List<T> {
          * any element: they are transferred, no matter whether x is an lvalue or an rvalue, 
          * or whether the value_type supports move-construction or not.
         */
-        void merge(CircularLinkedList<T>&);
+        void merge(CircularLinkedList<T>& t){
+            int a;
+        };
 };
 
 #endif
