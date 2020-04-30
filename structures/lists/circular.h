@@ -225,6 +225,7 @@ class CircularLinkedList : public List<T> {
          * or whether the value_type supports move-construction or not.
         */
         void merge(CircularLinkedList<T>& t){
+            // Así no es la idea :)
             for(int i = 0;i<t.size();i++){
                 push_back(t.operator[](i));
             }

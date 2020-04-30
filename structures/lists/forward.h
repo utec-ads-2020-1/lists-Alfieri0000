@@ -179,7 +179,8 @@ class ForwardList : public List<T> {
             }
             Node<T>* temp;
             temp = X.head;
-            while(temp->next != false){
+            //while(temp->next != false){ // Esta comparación no se puede hacer
+            while(temp->next){
                 push_back(temp->data);
                 temp = temp->next;
             }

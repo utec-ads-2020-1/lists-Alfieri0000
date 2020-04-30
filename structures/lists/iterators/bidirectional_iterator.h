@@ -17,6 +17,7 @@ class BidirectionalIterator {
 
         BidirectionalIterator<T> operator=(BidirectionalIterator<T> t){
             this->current = t->current;
+            // No hay return
         };
 
         bool operator!=(BidirectionalIterator<T> t){
@@ -25,13 +26,16 @@ class BidirectionalIterator {
 
         BidirectionalIterator<T> operator++(){
             this->current = this->current->next;
+            // No hay return, y si current es null?
         };
 
         BidirectionalIterator<T> operator--(){
             this->current = this->current->prev;
+            // No hay return, y si current es null?
         };
 
         T operator*(){
+            // Si current es null?
             return this->current->data;
         };
 };

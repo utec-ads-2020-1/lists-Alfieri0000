@@ -31,7 +31,7 @@ public:
 	};
 
 	void pop(){
-		if (empty()){
+		if (empty()){ // Podrías ignorarlo
 			throw out_of_range("List is Empty");
 		}
 		this->top--;

@@ -132,9 +132,10 @@ class LinkedList : public List<T> {
             }
         };
         void reverse(){
-            if (empty()){
+            if (empty()){ // No sería necesario
                 throw out_of_range("List is Empty");
             }
+            // Se puede hacer más eficiente
             LinkedList<T> tempReemplazo;
             for(int i = size()-1; i >= 0;i--){
                 tempReemplazo.push_back(operator[](i));
@@ -175,7 +176,8 @@ class LinkedList : public List<T> {
             }
             Node<T>* temp;
             temp = X.head;
-            while(temp->next != false){
+            //while(temp->next != false){ // Esta comparación no se puede hacer
+            while(temp->next){
                 push_back(temp->data);
                 temp = temp->next;
             }
